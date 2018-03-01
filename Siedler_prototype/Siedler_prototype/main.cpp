@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "SFML/Graphics.hpp"
+#include "game/TileMap.h"
 
 int main()
 {
@@ -36,6 +37,8 @@ int main()
 	sprite_1.setScale(.5, .5);
 	sprite_1.setPosition(20, 130);
 
+	TileMap tileMap;
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -48,6 +51,7 @@ int main()
 		window.draw(text);
 		window.draw(sprite);
 		window.draw(sprite_1);
+		tileMap.drawMap(window);
 		window.display();
 	}
 
