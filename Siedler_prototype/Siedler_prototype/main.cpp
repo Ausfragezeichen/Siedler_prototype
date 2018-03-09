@@ -49,29 +49,55 @@ int main()
 
 	zlvlRendering.sortDrawables(1);
 
-	CaveMan cMan(350, 200);
+	CaveMan cMan(80, 40);
+	zlvlRendering.addDrawable(&cMan, 1);
+
+	//load stuff for different mouse cursor
+	sf::Texture& cursor_tex = TextureStore::getInstance().getTexture(TextureStore::CURSOR_1);
+	sf::Sprite cursor_1(cursor_tex);
+	zlvlRendering.setCurser(&cursor_1);
+	
 	
 	sf::Thread drawThread(std::bind(&renderingThread, &window, zlvlRendering));
 	drawThread.launch();
 
 	sf::Clock clock;
 
+	std::vector<Animatable *> allAnimatables = { &cMan };
+	std::vector<Clickable *> allRightClickables = { &cMan };
+
+
+
+	bool useCustomCursor = false;
+
 	while (window.isOpen())
 	{
 		sf::Time current_time = clock.getElapsedTime();
 		sf::Int64 mu_s = current_time.asMicroseconds();
 		
+		//go through all animatable objects
+		for (auto const& item : allAnimatables) {
+			item->updateAnimation(mu_s);
+		}
+
+		if(useCustomCursor)
+			cursor_1.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
 
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				if (event.mouseButton.button == sf::Mouse::Right)
+				if (event.mouseButton.button == sf::Mouse::Left)
 				{
-					std::cout << "the right button was pressed" << std::endl;
-					std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-					std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+					for (auto const& item : allRightClickables) {
+						item->clicked(event.mouseButton.x, event.mouseButton.y);
+					}
+				}
+				if (event.mouseButton.button == sf::Mouse::Right) {
+					window.setMouseCursorVisible(false); // Hide cursor#
+					useCustomCursor = true;
+					
 				}
 			}
 			if (event.type == sf::Event::Closed)

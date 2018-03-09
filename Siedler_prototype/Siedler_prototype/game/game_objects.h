@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include "../properties.h"
 
 /*interface*/
 class Animatable {
@@ -20,7 +21,7 @@ public:
 
 	virtual void clicked(int x, int y) = 0;
 
-	virtual const std::array<int, 4>& getRectEventBox() const = 0;
+	virtual bool isClicked(int x, int y) const = 0;
 };
 
 
@@ -36,8 +37,13 @@ public :
 class GameObjectStore {
 private:
 	std::vector<Animatable *> animatedObj;
-	std::vector<Clickable *> clickableObj;
+	std::array<std::vector<Clickable *>, Z> clickableLeftObj;
+	std::array<std::vector<Clickable *>, Z> clickableRightObj;
 public:
+	enum class MouseButtons {
+		LEFT, RIGHT
+	};
+
 	GameObjectStore() {}
 	~GameObjectStore() {}
 
@@ -45,7 +51,9 @@ public:
 
 	void removeAnimatedObj(Animatable* item);
 
-	void addClickableObj(Clickable* item);
+	void addClickableObj(Clickable* item, GameObjectStore::MouseButtons mb, int zlvl);
 
-	void removeClickableObj(Clickable* item);
+	void removeClickableObj(Clickable* item, GameObjectStore::MouseButtons mb, int zlvl);
+
+	void findClickedObject(int x, int y, GameObjectStore::MouseButtons mb);
 };

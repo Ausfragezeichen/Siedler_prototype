@@ -3,13 +3,16 @@
 #include <vector>
 #include <array>
 #include "drawable.h"
+#include "../properties.h"
 
 class ZlvlRendering {
 private:
-	static const int Z = 5;
+	
 	std::array<std::vector<Drawable*>, Z> z_lvls;
 
 	sf::RenderWindow& window;
+
+	sf::Sprite* mouseSprite = nullptr;
 
 public:
 	ZlvlRendering(sf::RenderWindow& window) : window(window) {
@@ -22,6 +25,8 @@ public:
 	void removeDrawable(Drawable* item, int zlvl);
 
 	void sortDrawables(int zlvl);
+
+	void setCurser(sf::Sprite* cursorSprite);
 
 	/**
 	 * runs in different Thread! Fine, as long as all requests are handled "read-only"

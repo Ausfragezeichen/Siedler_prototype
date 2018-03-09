@@ -30,4 +30,13 @@ void ZlvlRendering::drawLoop() const {
 			element->draw(window);
 		}
 	}
+	//render Mouse
+	if(mouseSprite)
+		window.draw(*mouseSprite);
+	
+}
+
+void ZlvlRendering::setCurser(sf::Sprite* cursorSprite){
+	std::cout << "yo\n";
+	this->mouseSprite = cursorSprite;
 }

@@ -10,7 +10,9 @@ private:
 	TextureStore() {}	//singleton!
 
 	std::map<std::string, sf::Texture* > textures;
+	std::map<std::string, std::vector<sf::Texture *>> animations;
 public:
+	static const std::string CURSOR_1;
 	static const std::string GRAS_TILE;
 	static const std::string SAND_TILE;
 	static const std::string CAVEMAN_WALKING_SE;
@@ -27,5 +29,5 @@ public:
 
 	sf::Texture& getTexture(std::string key);
 
-	std::vector<sf::Texture *> getManyTextures(std::string key);
+	std::vector<sf::Texture *>& getManyTextures(std::string key);
 };
