@@ -36,6 +36,9 @@
     <ClCompile Include="game\game_obj\caveman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="network\manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\TileMap.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\game_obj\caveman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="network\manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

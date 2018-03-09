@@ -90,6 +90,7 @@
     <ClCompile Include="game\tile.cpp" />
     <ClCompile Include="game\TileMap.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="network\manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineTopLvl\drawable.h" />
@@ -99,6 +100,7 @@
     <ClInclude Include="game\game_obj\caveman.h" />
     <ClInclude Include="game\tile.h" />
     <ClInclude Include="game\TileMap.h" />
+    <ClInclude Include="network\manager.h" />
     <ClInclude Include="properties.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

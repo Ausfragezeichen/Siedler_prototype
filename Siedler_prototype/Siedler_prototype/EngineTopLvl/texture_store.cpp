@@ -16,5 +16,10 @@ sf::Texture& TextureStore::getTexture(std::string key) {
 	return *(textures[key]);
 }
 
+std::vector<sf::Texture*> TextureStore::getManyTextures(std::string key){
+	return std::vector<sf::Texture*>();
+}
+
 const std::string TextureStore::GRAS_TILE = "gras_tile";
 const std::string TextureStore::SAND_TILE = "sand_tile";
+const std::string TextureStore::CAVEMAN_WALKING_SE = "caveman_w_se";

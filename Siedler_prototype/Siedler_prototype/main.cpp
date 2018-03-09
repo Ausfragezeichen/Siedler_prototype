@@ -16,13 +16,13 @@
 #include "game/game_obj/caveman.h"
 
 
-void renderingThread(sf::RenderWindow* window, ZlvlRendering* z)
+void renderingThread(sf::RenderWindow* window, ZlvlRendering& z)
 {
 	while (window->isOpen())
 	{
 
 		window->clear(sf::Color::Black);
-		z->drawLoop();
+		z.drawLoop();
 
 		window->display();
 	}
@@ -51,7 +51,7 @@ int main()
 
 	CaveMan cMan(350, 200);
 	
-	sf::Thread drawThread(std::bind(&renderingThread, &window, &zlvlRendering));
+	sf::Thread drawThread(std::bind(&renderingThread, &window, zlvlRendering));
 	drawThread.launch();
 
 	sf::Clock clock;

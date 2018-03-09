@@ -11,3 +11,11 @@ void CaveMan::clicked(int x, int y) {
 const std::array<int, 4>& CaveMan::getRectEventBox() const {
 	return this->clickEventBox;
 }
+
+void CaveMan::draw(sf::RenderWindow& window) const {
+	window.draw(this->currentSprite);
+}
+
+double CaveMan::getYPosition() const {
+	return this->yPos;
+}
