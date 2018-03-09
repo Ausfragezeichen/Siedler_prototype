@@ -12,7 +12,10 @@ private:
 
 	sf::RenderWindow& window;
 
-	sf::Sprite* mouseSprite = nullptr;
+	sf::Sprite* mouseSprite1 = nullptr;
+	sf::Sprite* mouseSprite2 = nullptr;
+
+	bool a = true;
 
 public:
 	ZlvlRendering(sf::RenderWindow& window) : window(window) {
@@ -26,10 +29,12 @@ public:
 
 	void sortDrawables(int zlvl);
 
-	void setCurser(sf::Sprite* cursorSprite);
+	void setCurser(sf::Sprite* cursorSprite1, sf::Sprite* cursorSprite2);
 
 	/**
 	 * runs in different Thread! Fine, as long as all requests are handled "read-only"
 	 */
 	void drawLoop() const;
+
+	void changeCursor();
 };

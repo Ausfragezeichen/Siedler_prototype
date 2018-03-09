@@ -31,12 +31,18 @@ void ZlvlRendering::drawLoop() const {
 		}
 	}
 	//render Mouse
-	if(mouseSprite)
-		window.draw(*mouseSprite);
+	if(a)
+		window.draw(*mouseSprite2);
+	else
+		window.draw(*mouseSprite2);
 	
 }
 
-void ZlvlRendering::setCurser(sf::Sprite* cursorSprite){
-	std::cout << "yo\n";
-	this->mouseSprite = cursorSprite;
+void ZlvlRendering::setCurser(sf::Sprite* cursorSprite1, sf::Sprite* cursorSprite2){
+	this->mouseSprite1 = cursorSprite1;
+	this->mouseSprite2 = cursorSprite2;
+}
+
+void ZlvlRendering::changeCursor(){
+	bool a = false;
 }

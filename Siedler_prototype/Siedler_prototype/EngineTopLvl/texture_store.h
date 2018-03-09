@@ -13,6 +13,8 @@ private:
 	std::map<std::string, std::vector<sf::Texture *>> animations;
 public:
 	static const std::string CURSOR_1;
+	static const std::string CURSOR_2;
+	static const std::string CURSOR_3;
 	static const std::string GRAS_TILE;
 	static const std::string SAND_TILE;
 	static const std::string CAVEMAN_WALKING_SE;

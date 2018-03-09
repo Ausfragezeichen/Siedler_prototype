@@ -14,13 +14,27 @@ void TextureStore::loadAllTextures() {
 	this->textures.insert(std::pair<std::string, sf::Texture*>(SAND_TILE, temp));
 
 	//cursor textures
+	sf::Image temp_img;
 	temp = new sf::Texture();
-	temp->loadFromFile(Cursor_1_Tex);
+	temp_img.loadFromFile(Cursor_1_Tex);
+	temp_img.createMaskFromColor(temp_img.getPixel(0, 0), 0);
+	temp->loadFromImage(temp_img);
 	this->textures.insert(std::pair<std::string, sf::Texture*>(CURSOR_1, temp));
+
+	temp = new sf::Texture();
+	temp_img.loadFromFile(Cursor_2_Tex);
+	temp_img.createMaskFromColor(temp_img.getPixel(0, 0), 0);
+	temp->loadFromImage(temp_img);
+	this->textures.insert(std::pair<std::string, sf::Texture*>(CURSOR_2, temp));
+
+	temp = new sf::Texture();
+	temp_img.loadFromFile(Cursor_3_Tex);
+	temp_img.createMaskFromColor(temp_img.getPixel(0, 0), 0);
+	temp->loadFromImage(temp_img);
+	this->textures.insert(std::pair<std::string, sf::Texture*>(CURSOR_3, temp));
 
 	//load animation textures
 	char b[2];
-	sf::Image temp_img;
 	std::vector<sf::Texture *> tex_bundle;		//wird dann kopiert..
 	for (int i = 0; i < 8; i++) {
 		
@@ -45,6 +59,8 @@ std::vector<sf::Texture*> & TextureStore::getManyTextures(std::string key){
 
 
 const std::string TextureStore::CURSOR_1 = "cursor_1";
+const std::string TextureStore::CURSOR_2 = "cursor_2";
+const std::string TextureStore::CURSOR_3 = "cursor_3";
 const std::string TextureStore::GRAS_TILE = "gras_tile";
 const std::string TextureStore::SAND_TILE = "sand_tile";
 const std::string TextureStore::CAVEMAN_WALKING_SE = "caveman_w_se";

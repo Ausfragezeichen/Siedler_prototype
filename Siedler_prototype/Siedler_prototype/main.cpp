@@ -53,11 +53,16 @@ int main()
 	zlvlRendering.addDrawable(&cMan, 1);
 
 	//load stuff for different mouse cursor
-	sf::Texture& cursor_tex = TextureStore::getInstance().getTexture(TextureStore::CURSOR_1);
-	sf::Sprite cursor_1(cursor_tex);
-	zlvlRendering.setCurser(&cursor_1);
+	sf::Texture& cursor_1_tex = TextureStore::getInstance().getTexture(TextureStore::CURSOR_1);
+	sf::Sprite cursor_1(cursor_1_tex);
 	
+	sf::Texture& cursor_2_tex = TextureStore::getInstance().getTexture(TextureStore::CURSOR_2);
+	sf::Sprite cursor_2(cursor_2_tex);
 	
+	sf::Sprite* currentCursor = &cursor_2;
+
+	zlvlRendering.setCurser(&cursor_1, &cursor_2);
+
 	sf::Thread drawThread(std::bind(&renderingThread, &window, zlvlRendering));
 	drawThread.launch();
 
@@ -70,6 +75,8 @@ int main()
 
 	bool useCustomCursor = false;
 
+	window.setMouseCursorVisible(false); // Hide cursor
+
 	while (window.isOpen())
 	{
 		sf::Time current_time = clock.getElapsedTime();
@@ -80,8 +87,7 @@ int main()
 			item->updateAnimation(mu_s);
 		}
 
-		if(useCustomCursor)
-			cursor_1.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
+		currentCursor->setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
 
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -95,9 +101,8 @@ int main()
 					}
 				}
 				if (event.mouseButton.button == sf::Mouse::Right) {
-					window.setMouseCursorVisible(false); // Hide cursor#
-					useCustomCursor = true;
-					
+					currentCursor = &cursor_2;
+					zlvlRendering.changeCursor();
 				}
 			}
 			if (event.type == sf::Event::Closed)
