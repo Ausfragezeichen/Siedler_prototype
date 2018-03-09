@@ -78,5 +78,11 @@
     <Image Include="..\sprites\cursor\Cursor1.bmp">
       <Filter>Resource Files\Sprites\cursor</Filter>
     </Image>
+    <Image Include="..\sprites\cursor\Cursor2.bmp">
+      <Filter>Resource Files\Sprites\cursor</Filter>
+    </Image>
+    <Image Include="..\sprites\cursor\Cursor3.bmp">
+      <Filter>Resource Files\Sprites\cursor</Filter>
+    </Image>
   </ItemGroup>
 </Project>

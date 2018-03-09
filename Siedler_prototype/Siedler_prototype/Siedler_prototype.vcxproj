@@ -106,6 +106,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\sprites\cursor\Cursor1.bmp" />
+    <Image Include="..\sprites\cursor\Cursor2.bmp" />
+    <Image Include="..\sprites\cursor\Cursor3.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
