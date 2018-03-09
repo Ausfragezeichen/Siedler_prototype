@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Sprites">
+      <UniqueIdentifier>{3e224044-5937-468f-9044-409e6e04043a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Sprites\cursor">
+      <UniqueIdentifier>{df22d326-dede-497d-9102-a9977116a1d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -67,5 +73,10 @@
     <Text Include="Readme.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\sprites\cursor\Cursor1.bmp">
+      <Filter>Resource Files\Sprites\cursor</Filter>
+    </Image>
   </ItemGroup>
 </Project>
